@@ -14,11 +14,10 @@
  * shall be included in all copies or substantial portions of the Software.
  */
 
-
+import java.io.FileWriter;
+import java.io.IOException;
 import lombok.Getter;
-
 import java.util.*;
-
 import static java.util.Objects.requireNonNull;
 
 /**
@@ -130,6 +129,21 @@ public class Huffman {
      * Genera el árbol Huffman.
      */
     public void generateTree() {
-        // Este método podría implementarse para generar visualizaciones del árbol Huffman si es necesario.
+        try {
+            FileWriter escritor = new FileWriter("//D://Documentos UVG//archivoTree.txt");
+            StringBuilder lines = new StringBuilder(); // Usamos StringBuilder para construir la cadena eficientemente
+            charFrequencies.forEach((character, frequency) ->
+                    lines.append(character).append(": ").append(frequency).append("\n"));
+            escritor.write(lines.toString());
+            // Cerramos el escritor
+            escritor.close();
+
+            System.out.println("Se ha escrito en el archivo exitosamente.");
+
+        } catch (IOException e) {
+            // Capturamos y manejamos cualquier excepción de E/S
+            System.out.println("Ha ocurrido un error al escribir en el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

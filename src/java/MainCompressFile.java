@@ -18,6 +18,7 @@ public class MainCompressFile {
         Huffman gabriel = new Huffman(textToEncode);
         Compress compressedFile = new Compress(gabriel);
         compressedFile.generateHuffmanFile();
+        gabriel.generateTree();
 
     }
 }
