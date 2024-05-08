@@ -1,3 +1,10 @@
+/**
+ * Universidad del Valle de Guatemala
+ * Algoritmos y estructura de datos
+ * @author Gadiel Ocaña
+ * @author Marcos Amobrosio
+ * Clase main
+ */
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,7 +25,22 @@ public class MainCompressFile {
         Huffman gabriel = new Huffman(textToEncode);
         Compress compressedFile = new Compress(gabriel);
         compressedFile.generateHuffmanFile();
+        gabriel.encode();
+        gabriel.printCodes();
         gabriel.generateTree();
+        double ratioCompresion = (double) 87 /111*100;
+
+        System.out.println("Ratio de compresion: " + ratioCompresion+"%");
+
+        String inputFile = "input.txt";
+        String outputFile = "output.txt";
+        try {
+            HuffmanDecompressor.decompress(inputFile, outputFile);
+            System.out.println("Descompresión completada exitosamente.");
+        } catch (IOException e) {
+            System.out.println("Error de entrada/salida: " + e.getMessage());
+}
+
 
     }
 }

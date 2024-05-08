@@ -1,6 +1,12 @@
 import lombok.Setter;
 import lombok.Getter;
-
+/**
+ * Universidad del Valle de Guatemala
+ * Algoritmos y estructura de datos
+ * @author Gadiel Ocaña
+ * @author Marcos Amobrosio
+ * Clase para comprimir el archivo
+ */
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +16,7 @@ import java.util.ArrayList;
  */
 public class Compress {
 
-    private Huffman huffmanTree; // Árbol de Huffman utilizado para la compresión
+    private final Huffman huffmanTree; // Árbol de Huffman utilizado para la compresión
     private String huffmanCode; // Código Huffman generado
 
     /**

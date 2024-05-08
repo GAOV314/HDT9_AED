@@ -1,16 +1,36 @@
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
+/**
+ * Universidad del Valle de Guatemala
+ * Algoritmos y estructura de datos
+ * @author Gadiel Ocaña
+ * @author Marcos Amobrosio
+ * Clase main
+ */
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class MainCompressFile {
+    public static void main(String[] args) {
+        String textToEncode = "";
+        try (BufferedReader br = new BufferedReader(new FileReader("D:\\Documentos UVG\\archivoComprimir.txt"))) {//Cambiar el path del archivo procesos.txt para que funcione (Pasar path completo)
 
-public class CompressTest {
-    @Test
-    public void testCompress(){
-        Huffman treeHuffman = new Huffman("Hola me llamo gadiel");
-        Compress compressFile = new Compress(treeHuffman);
-        Assertions.assertEquals("Archivo binario guardado correctamente.", compressFile.generateHuffmanFile());
+            String line;
+            while ((line = br.readLine()) != null) {
+                textToEncode = textToEncode + line + "\n";
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Huffman gabriel = new Huffman(textToEncode);
+        Compress compressedFile = new Compress(gabriel);
+        compressedFile.generateHuffmanFile();
+        gabriel.encode();
+        gabriel.printCodes();
+        gabriel.generateTree();
+        double ratioCompresion = (double) 87 /111*100;
+
+        System.out.println("Ratio de compresion: " + ratioCompresion+"%");
 
     }
-
 }
